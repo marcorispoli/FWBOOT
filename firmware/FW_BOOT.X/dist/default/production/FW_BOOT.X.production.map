@@ -20,36 +20,35 @@ section                    address  length [bytes]      (dec)  Description
 .text.CLOCK_Initialize       0x400           0xd4         212   
 .text.PORT_Initialize        0x4d4           0x94         148   
 .text.Reset_Handler          0x568           0x90         144   
-.text.bootloader_testRu      0x5f8           0x8c         140   
-.text.CAN0_Initialize        0x684           0x88         136   
-.text.__pic32c_data_ini      0x70c           0x88         136   
-.dinit                       0x794           0x50          80   
-.text.__libc_init_array      0x7e4           0x48          72   
-.text.RTC_Initialize         0x82c           0x44          68   
-.text                        0x870           0x40          64  App's exec code 
-.text.NVIC_Initialize        0x8b0           0x40          64   
-.text.TC0_CompareInitia      0x8f0           0x34          52   
-.text.RTC_InterruptHand      0x924           0x28          40   
-.text.SYS_Initialize         0x94c           0x24          36   
-.text.memcpy                 0x970           0x1c          28   
-.text.bootloader_runApp      0x98c           0x1a          26   
-.text.main                   0x9a6           0x1a          26   
-.text.TC0_CompareStart       0x9c0           0x18          24   
-.rodata                      0x9d8           0x10          16  Read-only const 
-.text.NVMCTRL_Initializ      0x9e8           0x10          16   
-.text.memset                 0x9f8           0x10          16   
-.text.EVSYS_Initialize       0xa08            0x2           2   
-.text.Dummy_Handler          0xa0a            0x2           2   
-.text.NonMaskableInt_Ha      0xa0c            0x2           2   
-.text.HardFault_Handler      0xa0e            0x2           2   
-.text.DebugMonitor_Hand      0xa10            0x2           2   
-.text.MemoryManagement_      0xa12            0x2           2   
-.text.BusFault_Handler       0xa14            0x2           2   
-.text.UsageFault_Handle      0xa16            0x2           2   
-.text.Dummy_App_Func         0xa18            0x2           2   
-      Total ROM used  :       0xa1a        2586  0.2% of 0x100000
+.text.CAN0_Initialize        0x5f8           0x88         136   
+.text.__pic32c_data_ini      0x680           0x88         136   
+.text.bootloader_testRu      0x708           0x58          88   
+.dinit                       0x760           0x50          80   
+.text.__libc_init_array      0x7b0           0x48          72   
+.text.RTC_Initialize         0x7f8           0x44          68   
+.text                        0x83c           0x40          64  App's exec code 
+.text.NVIC_Initialize        0x87c           0x40          64   
+.text.TC0_CompareInitia      0x8bc           0x34          52   
+.text.RTC_InterruptHand      0x8f0           0x28          40   
+.text.SYS_Initialize         0x918           0x24          36   
+.text.memcpy                 0x93c           0x1c          28   
+.text.main                   0x958           0x16          22   
+.text.bootloader_runApp      0x96e           0x14          20   
+.text.EVSYS_Initialize       0x982            0x2           2   
+.rodata                      0x984           0x10          16  Read-only const 
+.text.NVMCTRL_Initializ      0x994           0x10          16   
+.text.memset                 0x9a4           0x10          16   
+.text.Dummy_Handler          0x9b4            0x2           2   
+.text.NonMaskableInt_Ha      0x9b6            0x2           2   
+.text.HardFault_Handler      0x9b8            0x2           2   
+.text.DebugMonitor_Hand      0x9ba            0x2           2   
+.text.MemoryManagement_      0x9bc            0x2           2   
+.text.BusFault_Handler       0x9be            0x2           2   
+.text.UsageFault_Handle      0x9c0            0x2           2   
+.text.Dummy_App_Func         0x9c2            0x2           2   
+      Total ROM used  :       0x9c4        2500  0.2% of 0x100000
         --------------------------------------------------------------------------
-         Total Program Memory used  :       0xa1a        2586  0.2% of 0x100000
+         Total Program Memory used  :       0x9c4        2500  0.2% of 0x100000
         --------------------------------------------------------------------------
 
 
@@ -323,6 +322,8 @@ Discarded input sections
  .text          0x00000000        0x0 build/default/production/_ext/829342655/plib_tc0.o
  .data          0x00000000        0x0 build/default/production/_ext/829342655/plib_tc0.o
  .bss           0x00000000        0x0 build/default/production/_ext/829342655/plib_tc0.o
+ .text.TC0_CompareStart
+                0x00000000       0x18 build/default/production/_ext/829342655/plib_tc0.o
  .text.TC0_CompareStop
                 0x00000000       0x18 build/default/production/_ext/829342655/plib_tc0.o
  .text.TC0_CompareFrequencyGet
@@ -645,7 +646,7 @@ LOAD data_init
  .comment       0x00000053       0x54 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-memcpy-stub.o)
  .comment       0x00000053       0x54 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-memset.o)
 
-.debug_info     0x00000000     0xf94e
+.debug_info     0x00000000     0xfa97
  .debug_info    0x00000000     0x28a7 build/default/production/_ext/60165182/plib_can0.o
  .debug_info    0x000028a7      0x969 build/default/production/_ext/1984496892/plib_clock.o
  .debug_info    0x00003210      0x38c build/default/production/_ext/1986646378/plib_evsys.o
@@ -658,10 +659,10 @@ LOAD data_init
  .debug_info    0x0000a9a7     0x2288 build/default/production/_ext/1171490990/interrupts.o
  .debug_info    0x0000cc2f      0xfe0 build/default/production/_ext/1171490990/exceptions.o
  .debug_info    0x0000dc0f      0x995 build/default/production/_ext/1171490990/startup_xc32.o
- .debug_info    0x0000e5a4     0x10dd build/default/production/_ext/1360937237/main.o
- .debug_info    0x0000f681      0x2cd c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v7e-m+fp/hard\libpic32c.a(data_init.o)
+ .debug_info    0x0000e5a4     0x1226 build/default/production/_ext/1360937237/main.o
+ .debug_info    0x0000f7ca      0x2cd c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v7e-m+fp/hard\libpic32c.a(data_init.o)
 
-.debug_abbrev   0x00000000     0x1bb8
+.debug_abbrev   0x00000000     0x1b9d
  .debug_abbrev  0x00000000      0x45e build/default/production/_ext/60165182/plib_can0.o
  .debug_abbrev  0x0000045e      0x135 build/default/production/_ext/1984496892/plib_clock.o
  .debug_abbrev  0x00000593       0x64 build/default/production/_ext/1986646378/plib_evsys.o
@@ -674,10 +675,10 @@ LOAD data_init
  .debug_abbrev  0x00001355      0x1cc build/default/production/_ext/1171490990/interrupts.o
  .debug_abbrev  0x00001521      0x1ac build/default/production/_ext/1171490990/exceptions.o
  .debug_abbrev  0x000016cd      0x209 build/default/production/_ext/1171490990/startup_xc32.o
- .debug_abbrev  0x000018d6      0x2b4 build/default/production/_ext/1360937237/main.o
- .debug_abbrev  0x00001b8a       0x2e c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v7e-m+fp/hard\libpic32c.a(data_init.o)
+ .debug_abbrev  0x000018d6      0x299 build/default/production/_ext/1360937237/main.o
+ .debug_abbrev  0x00001b6f       0x2e c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v7e-m+fp/hard\libpic32c.a(data_init.o)
 
-.debug_loc      0x00000000     0x1531
+.debug_loc      0x00000000     0x151e
  .debug_loc     0x00000000      0x99a build/default/production/_ext/60165182/plib_can0.o
  .debug_loc     0x0000099a       0xf9 build/default/production/_ext/1865468468/plib_nvic.o
  .debug_loc     0x00000a93      0x4bf build/default/production/_ext/1593096446/plib_nvmctrl.o
@@ -686,8 +687,8 @@ LOAD data_init
  .debug_loc     0x000011ee      0x141 build/default/production/_ext/829342655/plib_tc0.o
  .debug_loc     0x0000132f       0x45 build/default/production/_ext/1171490990/initialization.o
  .debug_loc     0x00001374       0x60 build/default/production/_ext/1171490990/startup_xc32.o
- .debug_loc     0x000013d4      0x149 build/default/production/_ext/1360937237/main.o
- .debug_loc     0x0000151d       0x14 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v7e-m+fp/hard\libpic32c.a(data_init.o)
+ .debug_loc     0x000013d4      0x136 build/default/production/_ext/1360937237/main.o
+ .debug_loc     0x0000150a       0x14 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v7e-m+fp/hard\libpic32c.a(data_init.o)
 
 .debug_aranges  0x00000000      0x450
  .debug_aranges
@@ -719,7 +720,7 @@ LOAD data_init
  .debug_aranges
                 0x00000430       0x20 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v7e-m+fp/hard\libpic32c.a(data_init.o)
 
-.debug_ranges   0x00000000      0x3a0
+.debug_ranges   0x00000000      0x388
  .debug_ranges  0x00000000       0x90 build/default/production/_ext/60165182/plib_can0.o
  .debug_ranges  0x00000090       0x10 build/default/production/_ext/1984496892/plib_clock.o
  .debug_ranges  0x000000a0       0x10 build/default/production/_ext/1986646378/plib_evsys.o
@@ -732,10 +733,10 @@ LOAD data_init
  .debug_ranges  0x000002e0       0x10 build/default/production/_ext/1171490990/interrupts.o
  .debug_ranges  0x000002f0       0x38 build/default/production/_ext/1171490990/exceptions.o
  .debug_ranges  0x00000328       0x18 build/default/production/_ext/1171490990/startup_xc32.o
- .debug_ranges  0x00000340       0x50 build/default/production/_ext/1360937237/main.o
- .debug_ranges  0x00000390       0x10 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v7e-m+fp/hard\libpic32c.a(data_init.o)
+ .debug_ranges  0x00000340       0x38 build/default/production/_ext/1360937237/main.o
+ .debug_ranges  0x00000378       0x10 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v7e-m+fp/hard\libpic32c.a(data_init.o)
 
-.debug_line     0x00000000     0x2f43
+.debug_line     0x00000000     0x2f29
  .debug_line    0x00000000      0x8d9 build/default/production/_ext/60165182/plib_can0.o
  .debug_line    0x000008d9      0x2cb build/default/production/_ext/1984496892/plib_clock.o
  .debug_line    0x00000ba4      0x131 build/default/production/_ext/1986646378/plib_evsys.o
@@ -748,10 +749,10 @@ LOAD data_init
  .debug_line    0x000024d1      0x1a8 build/default/production/_ext/1171490990/interrupts.o
  .debug_line    0x00002679      0x201 build/default/production/_ext/1171490990/exceptions.o
  .debug_line    0x0000287a      0x2b5 build/default/production/_ext/1171490990/startup_xc32.o
- .debug_line    0x00002b2f      0x304 build/default/production/_ext/1360937237/main.o
- .debug_line    0x00002e33      0x110 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v7e-m+fp/hard\libpic32c.a(data_init.o)
+ .debug_line    0x00002b2f      0x2ea build/default/production/_ext/1360937237/main.o
+ .debug_line    0x00002e19      0x110 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v7e-m+fp/hard\libpic32c.a(data_init.o)
 
-.debug_str      0x00000000      0x3e2
+.debug_str      0x00000000      0x3d1
  .debug_str     0x00000000       0x96 build/default/production/_ext/60165182/plib_can0.o
  .debug_str     0x00000096       0x14 build/default/production/_ext/1984496892/plib_clock.o
  .debug_str     0x000000aa        0x0 build/default/production/_ext/1986646378/plib_evsys.o
@@ -764,8 +765,8 @@ LOAD data_init
  .debug_str     0x00000369        0xe build/default/production/_ext/1171490990/interrupts.o
  .debug_str     0x00000377        0xe build/default/production/_ext/1171490990/exceptions.o
  .debug_str     0x00000385       0x2f build/default/production/_ext/1171490990/startup_xc32.o
- .debug_str     0x000003b4       0x2e build/default/production/_ext/1360937237/main.o
- .debug_str     0x000003e2        0x0 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v7e-m+fp/hard\libpic32c.a(data_init.o)
+ .debug_str     0x000003b4       0x1d build/default/production/_ext/1360937237/main.o
+ .debug_str     0x000003d1        0x0 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v7e-m+fp/hard\libpic32c.a(data_init.o)
 
 .debug_frame    0x00000000      0x7d0
  .debug_frame   0x00000000      0x190 build/default/production/_ext/60165182/plib_can0.o
@@ -835,278 +836,272 @@ LOAD data_init
                 0x00000568       0x90 build/default/production/_ext/1171490990/startup_xc32.o
                 0x00000568                Reset_Handler
 
-.text.bootloader_testRunApplication%11
-                0x000005f8       0x8c
- .text.bootloader_testRunApplication
-                0x000005f8       0x8c build/default/production/_ext/1360937237/main.o
-                0x000005f8                bootloader_testRunApplication
-
-.text.CAN0_Initialize%12
-                0x00000684       0x88
+.text.CAN0_Initialize%11
+                0x000005f8       0x88
  .text.CAN0_Initialize
-                0x00000684       0x88 build/default/production/_ext/60165182/plib_can0.o
-                0x00000684                CAN0_Initialize
+                0x000005f8       0x88 build/default/production/_ext/60165182/plib_can0.o
+                0x000005f8                CAN0_Initialize
 
-.text.__pic32c_data_initialization%13
-                0x0000070c       0x88
+.text.__pic32c_data_initialization%12
+                0x00000680       0x88
  .text.__pic32c_data_initialization
-                0x0000070c       0x88 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v7e-m+fp/hard\libpic32c.a(data_init.o)
-                0x0000070c                __pic32c_data_initialization
+                0x00000680       0x88 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v7e-m+fp/hard\libpic32c.a(data_init.o)
+                0x00000680                __pic32c_data_initialization
 
-.dinit%14       0x00000794       0x50
- .dinit         0x00000794       0x50 data_init
+.text.bootloader_testRunApplication%13
+                0x00000708       0x58
+ .text.bootloader_testRunApplication
+                0x00000708       0x58 build/default/production/_ext/1360937237/main.o
+                0x00000708                bootloader_testRunApplication
+
+.dinit%14       0x00000760       0x50
+ .dinit         0x00000760       0x50 data_init
 
 .text.__libc_init_array%15
-                0x000007e4       0x48
+                0x000007b0       0x48
  .text.__libc_init_array
-                0x000007e4       0x48 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-init.o)
-                0x000007e4                __libc_init_array
+                0x000007b0       0x48 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-init.o)
+                0x000007b0                __libc_init_array
 
 .text.RTC_Initialize%16
-                0x0000082c       0x44
+                0x000007f8       0x44
  .text.RTC_Initialize
-                0x0000082c       0x44 build/default/production/_ext/60180175/plib_rtc_timer.o
-                0x0000082c                RTC_Initialize
+                0x000007f8       0x44 build/default/production/_ext/60180175/plib_rtc_timer.o
+                0x000007f8                RTC_Initialize
 
-.text%17        0x00000870       0x40
- .text          0x00000870       0x40 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32c/8.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+.text%17        0x0000083c       0x40
+ .text          0x0000083c       0x40 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32c/8.3.1/thumb/v7e-m+fp/hard/crtbegin.o
 
 .text.NVIC_Initialize%18
-                0x000008b0       0x40
+                0x0000087c       0x40
  .text.NVIC_Initialize
-                0x000008b0       0x40 build/default/production/_ext/1865468468/plib_nvic.o
-                0x000008b0                NVIC_Initialize
+                0x0000087c       0x40 build/default/production/_ext/1865468468/plib_nvic.o
+                0x0000087c                NVIC_Initialize
 
 .text.TC0_CompareInitialize%19
-                0x000008f0       0x34
+                0x000008bc       0x34
  .text.TC0_CompareInitialize
-                0x000008f0       0x34 build/default/production/_ext/829342655/plib_tc0.o
-                0x000008f0                TC0_CompareInitialize
+                0x000008bc       0x34 build/default/production/_ext/829342655/plib_tc0.o
+                0x000008bc                TC0_CompareInitialize
 
 .text.RTC_InterruptHandler%20
-                0x00000924       0x28
+                0x000008f0       0x28
  .text.RTC_InterruptHandler
-                0x00000924       0x28 build/default/production/_ext/60180175/plib_rtc_timer.o
-                0x00000924                RTC_InterruptHandler
+                0x000008f0       0x28 build/default/production/_ext/60180175/plib_rtc_timer.o
+                0x000008f0                RTC_InterruptHandler
 
 .text.SYS_Initialize%21
-                0x0000094c       0x24
+                0x00000918       0x24
  .text.SYS_Initialize
-                0x0000094c       0x24 build/default/production/_ext/1171490990/initialization.o
-                0x0000094c                SYS_Initialize
+                0x00000918       0x24 build/default/production/_ext/1171490990/initialization.o
+                0x00000918                SYS_Initialize
 
 .text.memcpy%22
-                0x00000970       0x1c
- .text.memcpy   0x00000970       0x1c c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-memcpy-stub.o)
-                0x00000970                memcpy
+                0x0000093c       0x1c
+ .text.memcpy   0x0000093c       0x1c c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-memcpy-stub.o)
+                0x0000093c                memcpy
 
-.text.bootloader_runApplication%23
-                0x0000098c       0x1a
+.text.main%23   0x00000958       0x16
+ .text.main     0x00000958       0x16 build/default/production/_ext/1360937237/main.o
+                0x00000958                main
+
+.text.bootloader_runApplication%24
+                0x0000096e       0x14
  .text.bootloader_runApplication
-                0x0000098c       0x1a build/default/production/_ext/1360937237/main.o
-                0x0000098c                bootloader_runApplication
+                0x0000096e       0x14 build/default/production/_ext/1360937237/main.o
+                0x0000096e                bootloader_runApplication
 
-.text.main%24   0x000009a6       0x1a
- .text.main     0x000009a6       0x1a build/default/production/_ext/1360937237/main.o
-                0x000009a6                main
+.rodata%25      0x00000984       0x10
+ .rodata        0x00000984       0x10 build/default/production/_ext/60165182/plib_can0.o
 
-.text.TC0_CompareStart%25
-                0x000009c0       0x18
- .text.TC0_CompareStart
-                0x000009c0       0x18 build/default/production/_ext/829342655/plib_tc0.o
-                0x000009c0                TC0_CompareStart
-
-.rodata%26      0x000009d8       0x10
- .rodata        0x000009d8       0x10 build/default/production/_ext/60165182/plib_can0.o
-
-.text.NVMCTRL_Initialize%27
-                0x000009e8       0x10
+.text.NVMCTRL_Initialize%26
+                0x00000994       0x10
  .text.NVMCTRL_Initialize
-                0x000009e8       0x10 build/default/production/_ext/1593096446/plib_nvmctrl.o
-                0x000009e8                NVMCTRL_Initialize
+                0x00000994       0x10 build/default/production/_ext/1593096446/plib_nvmctrl.o
+                0x00000994                NVMCTRL_Initialize
 
-.text.memset%28
-                0x000009f8       0x10
- .text.memset   0x000009f8       0x10 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-memset.o)
-                0x000009f8                memset
+.text.memset%27
+                0x000009a4       0x10
+ .text.memset   0x000009a4       0x10 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-memset.o)
+                0x000009a4                memset
 
-.text.EVSYS_Initialize%29
-                0x00000a08        0x2
+.text.EVSYS_Initialize%28
+                0x00000982        0x2
  .text.EVSYS_Initialize
-                0x00000a08        0x2 build/default/production/_ext/1986646378/plib_evsys.o
-                0x00000a08                EVSYS_Initialize
+                0x00000982        0x2 build/default/production/_ext/1986646378/plib_evsys.o
+                0x00000982                EVSYS_Initialize
 
-.text.Dummy_Handler%30
-                0x00000a0a        0x2
+.text.Dummy_Handler%29
+                0x000009b4        0x2
  .text.Dummy_Handler
-                0x00000a0a        0x2 build/default/production/_ext/1171490990/interrupts.o
-                0x00000a0a                EIC_EXTINT_9_Handler
-                0x00000a0a                TCC0_MC5_Handler
-                0x00000a0a                SVCall_Handler
-                0x00000a0a                SERCOM0_2_Handler
-                0x00000a0a                USB_SOF_HSOF_Handler
-                0x00000a0a                TCC4_OTHER_Handler
-                0x00000a0a                TCC2_MC2_Handler
-                0x00000a0a                EVSYS_0_Handler
-                0x00000a0a                TRNG_Handler
-                0x00000a0a                TC2_Handler
-                0x00000a0a                USB_TRCPT0_Handler
-                0x00000a0a                DAC_OTHER_Handler
-                0x00000a0a                AC_Handler
-                0x00000a0a                DAC_EMPTY_0_Handler
-                0x00000a0a                DMAC_OTHER_Handler
-                0x00000a0a                EIC_EXTINT_5_Handler
-                0x00000a0a                SERCOM3_1_Handler
-                0x00000a0a                SysTick_Handler
-                0x00000a0a                SERCOM4_OTHER_Handler
-                0x00000a0a                SERCOM3_2_Handler
-                0x00000a0a                EIC_EXTINT_6_Handler
-                0x00000a0a                PendSV_Handler
-                0x00000a0a                TCC4_MC0_Handler
-                0x00000a0a                EVSYS_3_Handler
-                0x00000a0a                QSPI_Handler
-                0x00000a0a                TCC2_MC0_Handler
-                0x00000a0a                PDEC_OTHER_Handler
-                0x00000a0a                TCC3_MC0_Handler
-                0x00000a0a                PDEC_MC1_Handler
-                0x00000a0a                TCC2_MC1_Handler
-                0x00000a0a                OSCCTRL_XOSC1_Handler
-                0x00000a0a                PDEC_MC0_Handler
-                0x00000a0a                EIC_EXTINT_4_Handler
-                0x00000a0a                EIC_EXTINT_7_Handler
-                0x00000a0a                SERCOM0_OTHER_Handler
-                0x00000a0a                EVSYS_OTHER_Handler
-                0x00000a0a                SERCOM0_0_Handler
-                0x00000a0a                SERCOM4_0_Handler
-                0x00000a0a                TCC1_MC0_Handler
-                0x00000a0a                SERCOM1_OTHER_Handler
-                0x00000a0a                TCC2_OTHER_Handler
-                0x00000a0a                EIC_EXTINT_11_Handler
-                0x00000a0a                SUPC_BODDET_Handler
-                0x00000a0a                EIC_EXTINT_14_Handler
-                0x00000a0a                OSC32KCTRL_Handler
-                0x00000a0a                EVSYS_1_Handler
-                0x00000a0a                TCC4_MC1_Handler
-                0x00000a0a                DMAC_0_Handler
-                0x00000a0a                SUPC_OTHER_Handler
-                0x00000a0a                WDT_Handler
-                0x00000a0a                EIC_EXTINT_15_Handler
-                0x00000a0a                EIC_EXTINT_1_Handler
-                0x00000a0a                TCC3_MC1_Handler
-                0x00000a0a                SERCOM5_0_Handler
-                0x00000a0a                TC4_Handler
-                0x00000a0a                TC1_Handler
-                0x00000a0a                TCC1_MC1_Handler
-                0x00000a0a                EIC_EXTINT_0_Handler
-                0x00000a0a                TCC1_OTHER_Handler
-                0x00000a0a                PAC_Handler
-                0x00000a0a                SERCOM4_1_Handler
-                0x00000a0a                TC3_Handler
-                0x00000a0a                Dummy_Handler
-                0x00000a0a                DAC_RESRDY_0_Handler
-                0x00000a0a                SERCOM5_1_Handler
-                0x00000a0a                DMAC_2_Handler
-                0x00000a0a                TCC0_MC4_Handler
-                0x00000a0a                USB_TRCPT1_Handler
-                0x00000a0a                SERCOM0_1_Handler
-                0x00000a0a                TCC0_MC3_Handler
-                0x00000a0a                EIC_EXTINT_12_Handler
-                0x00000a0a                OSCCTRL_DPLL0_Handler
-                0x00000a0a                SERCOM5_OTHER_Handler
-                0x00000a0a                PM_Handler
-                0x00000a0a                OSCCTRL_DFLL_Handler
-                0x00000a0a                DAC_RESRDY_1_Handler
-                0x00000a0a                DMAC_1_Handler
-                0x00000a0a                USB_OTHER_Handler
-                0x00000a0a                CAN1_Handler
-                0x00000a0a                TCC0_OTHER_Handler
-                0x00000a0a                EIC_EXTINT_10_Handler
-                0x00000a0a                TCC1_MC3_Handler
-                0x00000a0a                OSCCTRL_XOSC0_Handler
-                0x00000a0a                TCC0_MC0_Handler
-                0x00000a0a                EIC_EXTINT_2_Handler
-                0x00000a0a                SDHC0_Handler
-                0x00000a0a                SERCOM1_1_Handler
-                0x00000a0a                I2S_Handler
-                0x00000a0a                PCC_Handler
-                0x00000a0a                TCC3_OTHER_Handler
-                0x00000a0a                EIC_EXTINT_13_Handler
-                0x00000a0a                SERCOM1_0_Handler
-                0x00000a0a                PUKCC_Handler
-                0x00000a0a                SERCOM2_1_Handler
-                0x00000a0a                SERCOM1_2_Handler
-                0x00000a0a                SERCOM3_0_Handler
-                0x00000a0a                SERCOM4_2_Handler
-                0x00000a0a                TCC1_MC2_Handler
-                0x00000a0a                ADC1_RESRDY_Handler
-                0x00000a0a                NVMCTRL_1_Handler
-                0x00000a0a                SERCOM5_2_Handler
-                0x00000a0a                SERCOM2_2_Handler
-                0x00000a0a                DAC_EMPTY_1_Handler
-                0x00000a0a                ADC1_OTHER_Handler
-                0x00000a0a                OSCCTRL_DPLL1_Handler
-                0x00000a0a                EIC_EXTINT_3_Handler
-                0x00000a0a                SERCOM3_OTHER_Handler
-                0x00000a0a                EIC_EXTINT_8_Handler
-                0x00000a0a                NVMCTRL_0_Handler
-                0x00000a0a                ADC0_RESRDY_Handler
-                0x00000a0a                ADC0_OTHER_Handler
-                0x00000a0a                MCLK_Handler
-                0x00000a0a                EVSYS_2_Handler
-                0x00000a0a                SERCOM2_OTHER_Handler
-                0x00000a0a                FREQM_Handler
-                0x00000a0a                TC0_Handler
-                0x00000a0a                TCC0_MC1_Handler
-                0x00000a0a                DMAC_3_Handler
-                0x00000a0a                RAMECC_Handler
-                0x00000a0a                TC5_Handler
-                0x00000a0a                SERCOM2_0_Handler
-                0x00000a0a                AES_Handler
-                0x00000a0a                ICM_Handler
-                0x00000a0a                TCC0_MC2_Handler
+                0x000009b4        0x2 build/default/production/_ext/1171490990/interrupts.o
+                0x000009b4                EIC_EXTINT_9_Handler
+                0x000009b4                TCC0_MC5_Handler
+                0x000009b4                SVCall_Handler
+                0x000009b4                SERCOM0_2_Handler
+                0x000009b4                USB_SOF_HSOF_Handler
+                0x000009b4                TCC4_OTHER_Handler
+                0x000009b4                TCC2_MC2_Handler
+                0x000009b4                EVSYS_0_Handler
+                0x000009b4                TRNG_Handler
+                0x000009b4                TC2_Handler
+                0x000009b4                USB_TRCPT0_Handler
+                0x000009b4                DAC_OTHER_Handler
+                0x000009b4                AC_Handler
+                0x000009b4                DAC_EMPTY_0_Handler
+                0x000009b4                DMAC_OTHER_Handler
+                0x000009b4                EIC_EXTINT_5_Handler
+                0x000009b4                SERCOM3_1_Handler
+                0x000009b4                SysTick_Handler
+                0x000009b4                SERCOM4_OTHER_Handler
+                0x000009b4                SERCOM3_2_Handler
+                0x000009b4                EIC_EXTINT_6_Handler
+                0x000009b4                PendSV_Handler
+                0x000009b4                TCC4_MC0_Handler
+                0x000009b4                EVSYS_3_Handler
+                0x000009b4                QSPI_Handler
+                0x000009b4                TCC2_MC0_Handler
+                0x000009b4                PDEC_OTHER_Handler
+                0x000009b4                TCC3_MC0_Handler
+                0x000009b4                PDEC_MC1_Handler
+                0x000009b4                TCC2_MC1_Handler
+                0x000009b4                OSCCTRL_XOSC1_Handler
+                0x000009b4                PDEC_MC0_Handler
+                0x000009b4                EIC_EXTINT_4_Handler
+                0x000009b4                EIC_EXTINT_7_Handler
+                0x000009b4                SERCOM0_OTHER_Handler
+                0x000009b4                EVSYS_OTHER_Handler
+                0x000009b4                SERCOM0_0_Handler
+                0x000009b4                SERCOM4_0_Handler
+                0x000009b4                TCC1_MC0_Handler
+                0x000009b4                SERCOM1_OTHER_Handler
+                0x000009b4                TCC2_OTHER_Handler
+                0x000009b4                EIC_EXTINT_11_Handler
+                0x000009b4                SUPC_BODDET_Handler
+                0x000009b4                EIC_EXTINT_14_Handler
+                0x000009b4                OSC32KCTRL_Handler
+                0x000009b4                EVSYS_1_Handler
+                0x000009b4                TCC4_MC1_Handler
+                0x000009b4                DMAC_0_Handler
+                0x000009b4                SUPC_OTHER_Handler
+                0x000009b4                WDT_Handler
+                0x000009b4                EIC_EXTINT_15_Handler
+                0x000009b4                EIC_EXTINT_1_Handler
+                0x000009b4                TCC3_MC1_Handler
+                0x000009b4                SERCOM5_0_Handler
+                0x000009b4                TC4_Handler
+                0x000009b4                TC1_Handler
+                0x000009b4                TCC1_MC1_Handler
+                0x000009b4                EIC_EXTINT_0_Handler
+                0x000009b4                TCC1_OTHER_Handler
+                0x000009b4                PAC_Handler
+                0x000009b4                SERCOM4_1_Handler
+                0x000009b4                TC3_Handler
+                0x000009b4                Dummy_Handler
+                0x000009b4                DAC_RESRDY_0_Handler
+                0x000009b4                SERCOM5_1_Handler
+                0x000009b4                DMAC_2_Handler
+                0x000009b4                TCC0_MC4_Handler
+                0x000009b4                USB_TRCPT1_Handler
+                0x000009b4                SERCOM0_1_Handler
+                0x000009b4                TCC0_MC3_Handler
+                0x000009b4                EIC_EXTINT_12_Handler
+                0x000009b4                OSCCTRL_DPLL0_Handler
+                0x000009b4                SERCOM5_OTHER_Handler
+                0x000009b4                PM_Handler
+                0x000009b4                OSCCTRL_DFLL_Handler
+                0x000009b4                DAC_RESRDY_1_Handler
+                0x000009b4                DMAC_1_Handler
+                0x000009b4                USB_OTHER_Handler
+                0x000009b4                CAN1_Handler
+                0x000009b4                TCC0_OTHER_Handler
+                0x000009b4                EIC_EXTINT_10_Handler
+                0x000009b4                TCC1_MC3_Handler
+                0x000009b4                OSCCTRL_XOSC0_Handler
+                0x000009b4                TCC0_MC0_Handler
+                0x000009b4                EIC_EXTINT_2_Handler
+                0x000009b4                SDHC0_Handler
+                0x000009b4                SERCOM1_1_Handler
+                0x000009b4                I2S_Handler
+                0x000009b4                PCC_Handler
+                0x000009b4                TCC3_OTHER_Handler
+                0x000009b4                EIC_EXTINT_13_Handler
+                0x000009b4                SERCOM1_0_Handler
+                0x000009b4                PUKCC_Handler
+                0x000009b4                SERCOM2_1_Handler
+                0x000009b4                SERCOM1_2_Handler
+                0x000009b4                SERCOM3_0_Handler
+                0x000009b4                SERCOM4_2_Handler
+                0x000009b4                TCC1_MC2_Handler
+                0x000009b4                ADC1_RESRDY_Handler
+                0x000009b4                NVMCTRL_1_Handler
+                0x000009b4                SERCOM5_2_Handler
+                0x000009b4                SERCOM2_2_Handler
+                0x000009b4                DAC_EMPTY_1_Handler
+                0x000009b4                ADC1_OTHER_Handler
+                0x000009b4                OSCCTRL_DPLL1_Handler
+                0x000009b4                EIC_EXTINT_3_Handler
+                0x000009b4                SERCOM3_OTHER_Handler
+                0x000009b4                EIC_EXTINT_8_Handler
+                0x000009b4                NVMCTRL_0_Handler
+                0x000009b4                ADC0_RESRDY_Handler
+                0x000009b4                ADC0_OTHER_Handler
+                0x000009b4                MCLK_Handler
+                0x000009b4                EVSYS_2_Handler
+                0x000009b4                SERCOM2_OTHER_Handler
+                0x000009b4                FREQM_Handler
+                0x000009b4                TC0_Handler
+                0x000009b4                TCC0_MC1_Handler
+                0x000009b4                DMAC_3_Handler
+                0x000009b4                RAMECC_Handler
+                0x000009b4                TC5_Handler
+                0x000009b4                SERCOM2_0_Handler
+                0x000009b4                AES_Handler
+                0x000009b4                ICM_Handler
+                0x000009b4                TCC0_MC2_Handler
 
-.text.NonMaskableInt_Handler%31
-                0x00000a0c        0x2
+.text.NonMaskableInt_Handler%30
+                0x000009b6        0x2
  .text.NonMaskableInt_Handler
-                0x00000a0c        0x2 build/default/production/_ext/1171490990/exceptions.o
-                0x00000a0c                NonMaskableInt_Handler
+                0x000009b6        0x2 build/default/production/_ext/1171490990/exceptions.o
+                0x000009b6                NonMaskableInt_Handler
 
-.text.HardFault_Handler%32
-                0x00000a0e        0x2
+.text.HardFault_Handler%31
+                0x000009b8        0x2
  .text.HardFault_Handler
-                0x00000a0e        0x2 build/default/production/_ext/1171490990/exceptions.o
-                0x00000a0e                HardFault_Handler
+                0x000009b8        0x2 build/default/production/_ext/1171490990/exceptions.o
+                0x000009b8                HardFault_Handler
 
-.text.DebugMonitor_Handler%33
-                0x00000a10        0x2
+.text.DebugMonitor_Handler%32
+                0x000009ba        0x2
  .text.DebugMonitor_Handler
-                0x00000a10        0x2 build/default/production/_ext/1171490990/exceptions.o
-                0x00000a10                DebugMonitor_Handler
+                0x000009ba        0x2 build/default/production/_ext/1171490990/exceptions.o
+                0x000009ba                DebugMonitor_Handler
 
-.text.MemoryManagement_Handler%34
-                0x00000a12        0x2
+.text.MemoryManagement_Handler%33
+                0x000009bc        0x2
  .text.MemoryManagement_Handler
-                0x00000a12        0x2 build/default/production/_ext/1171490990/exceptions.o
-                0x00000a12                MemoryManagement_Handler
+                0x000009bc        0x2 build/default/production/_ext/1171490990/exceptions.o
+                0x000009bc                MemoryManagement_Handler
 
-.text.BusFault_Handler%35
-                0x00000a14        0x2
+.text.BusFault_Handler%34
+                0x000009be        0x2
  .text.BusFault_Handler
-                0x00000a14        0x2 build/default/production/_ext/1171490990/exceptions.o
-                0x00000a14                BusFault_Handler
+                0x000009be        0x2 build/default/production/_ext/1171490990/exceptions.o
+                0x000009be                BusFault_Handler
 
-.text.UsageFault_Handler%36
-                0x00000a16        0x2
+.text.UsageFault_Handler%35
+                0x000009c0        0x2
  .text.UsageFault_Handler
-                0x00000a16        0x2 build/default/production/_ext/1171490990/exceptions.o
-                0x00000a16                UsageFault_Handler
+                0x000009c0        0x2 build/default/production/_ext/1171490990/exceptions.o
+                0x000009c0                UsageFault_Handler
 
-.text.Dummy_App_Func%37
-                0x00000a18        0x2
+.text.Dummy_App_Func%36
+                0x000009c2        0x2
  .text.Dummy_App_Func
-                0x00000a18        0x2 build/default/production/_ext/1171490990/startup_xc32.o
-                0x00000a18                _on_reset
-                0x00000a18                _on_bootstrap
-                0x00000a18                __xc32_on_reset
-                0x00000a18                Dummy_App_Func
-                0x00000a18                __xc32_on_bootstrap
+                0x000009c2        0x2 build/default/production/_ext/1171490990/startup_xc32.o
+                0x000009c2                _on_reset
+                0x000009c2                _on_bootstrap
+                0x000009c2                __xc32_on_reset
+                0x000009c2                Dummy_App_Func
+                0x000009c2                __xc32_on_bootstrap

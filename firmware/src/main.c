@@ -42,7 +42,7 @@ int main ( void )
 {
     /* Initialize all modules */
     SYS_Initialize ( NULL );
-    TC0_CompareStart();
+   // TC0_CompareStart();
     
     if(bootloader_testRunApplication()) bootloader_runApplication();
     
@@ -61,29 +61,39 @@ int main ( void )
 bool bootloader_testRunApplication(void){
     
     // Set the reserved bootloader RAM segment
-    uint32_t *sram = (uint32_t *)0x20000000;    
-    for(int i=0; i<4; i++) if(sram[i] != 0x5048434D){
-        for(int i=0; i<4; i++) sram[i] = 0;
-        return true;
-    }
+    _BOOTLOADER_SHARED_t* pBoot = (_BOOTLOADER_SHARED_t*) _BOOTLOADER_SHARED_RAM;
+    uint32_t msp            = *(uint32_t *)(_BOOTLOADER_APPLICATION_BOOT);
     
-    // Reset the shared RAM
-    for(int i=0; i<4; i++) sram[i] = 0;    
-    return false;
+    bool result = true;
+    
+    if((pBoot->activation_code0 == _BOOT_ACTIVATION_CODE_START0) && 
+       (pBoot->activation_code1 == _BOOT_ACTIVATION_CODE_START1) && 
+       (pBoot->activation_code2 == _BOOT_ACTIVATION_CODE_START2) &&      
+       (pBoot->activation_code3 == _BOOT_ACTIVATION_CODE_START3) ){ 
+       
+        result =  false;      
+    }else if (msp == 0xffffffff) result = false;
+    
+    pBoot->activation_code0 = _BOOT_ACTIVATION_CODE_PRESENCE0;
+    pBoot->activation_code1 = _BOOT_ACTIVATION_CODE_PRESENCE1;
+    pBoot->activation_code2 = _BOOT_ACTIVATION_CODE_PRESENCE2;
+    pBoot->activation_code3 = _BOOT_ACTIVATION_CODE_PRESENCE3;   
+    
+    pBoot->boot_maj = _BOOTLOADER_REV_MAJ;
+    pBoot->boot_min = _BOOTLOADER_REV_MIN;
+    pBoot->boot_sub = _BOOTLOADER_REV_SUB;
+    
+    return result;
     
 }
 
 void bootloader_runApplication(void)
 {
     // Set the addresses of the stack pointer and the reset vector of the application
-    uint32_t msp            = *(uint32_t *)(_APPLICATION_BOOT);
-    uint32_t reset_vector   = *(uint32_t *)(_APPLICATION_BOOT + 4);
+    uint32_t msp            = *(uint32_t *)(_BOOTLOADER_APPLICATION_BOOT);
+    uint32_t reset_vector   = *(uint32_t *)(_BOOTLOADER_APPLICATION_BOOT + 4);
 
-    
-    // If the application stack pointer is not initialized it means that 
-    // no valid application is present
-    if (msp == 0xffffffff) return;
-
+  
     // Assignes the Application stack pointer
     __set_MSP(msp);
     
