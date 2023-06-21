@@ -22,14 +22,20 @@
 // *****************************************************************************
 // *****************************************************************************
 
+ /** 
+ * \defgroup mainModule
+ * \ingroup applicationModule
+ *  @{
+*/
+
 #include <stddef.h>                     // Defines NULL
 #include <stdbool.h>                    // Defines true
 #include <stdlib.h>                     // Defines EXIT_FAILURE
 #include "definitions.h"                // SYS function prototypes
 #include "application.h"
 
-bool bootloader_testRunApplication(void);
-void bootloader_runApplication(void);
+static bool bootloader_testRunApplication(void);
+static void bootloader_runApplication(void);
 
 
 // *****************************************************************************
@@ -44,6 +50,7 @@ int main ( void )
     SYS_Initialize ( NULL );
    // TC0_CompareStart();
     
+    // Tests if the application shall run or the bootloader shall continue
     if(bootloader_testRunApplication()) bootloader_runApplication();
     
     
@@ -58,6 +65,12 @@ int main ( void )
     return ( EXIT_FAILURE );
 }
 
+/**
+ * This function verifies if the Application requested to start the Bootloader activities.
+ * 
+ * @return 
+ * - true: in case the application shall start 
+ */
 bool bootloader_testRunApplication(void){
     
     // Set the reserved bootloader RAM segment
@@ -74,6 +87,8 @@ bool bootloader_testRunApplication(void){
         result =  false;      
     }else if (msp == 0xffffffff) result = false;
     
+    // In case the application should start, the bootloader 
+    // upgrade the shared area with the necessary data to be passed to the application
     pBoot->activation_code0 = _BOOT_ACTIVATION_CODE_PRESENCE0;
     pBoot->activation_code1 = _BOOT_ACTIVATION_CODE_PRESENCE1;
     pBoot->activation_code2 = _BOOT_ACTIVATION_CODE_PRESENCE2;
@@ -87,6 +102,10 @@ bool bootloader_testRunApplication(void){
     
 }
 
+
+/**
+ * This function runs the target application
+ */
 void bootloader_runApplication(void)
 {
     // Set the addresses of the stack pointer and the reset vector of the application
@@ -104,4 +123,5 @@ void bootloader_runApplication(void)
 /*******************************************************************************
  End of File
 */
+// @}
 

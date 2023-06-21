@@ -1,74 +1,70 @@
-<center><font size ="6"><b>BOOTLOADER for the SAME51 based boards</b></font></center> 
+<center><font size ="6"><b>BOOTLOADER for SAME51 based boards</b></font></center> 
+<br>
+<br>
+<br>
+<br>
+
 
 <font size ="6"><b>Table of content</b></font>
 
-- [1. Overview](#1-overview)
-- [2. Target Application setting](#2-target-application-setting)
-  - [2.1. *Setting the Application Start Address to 0x2000*](#21-setting-the-application-start-address-to-0x2000)
-  - [2.2. *Setting the Bootloader shared RAM to 16 byte*](#22-setting-the-bootloader-shared-ram-to-16-byte)
-  - [2.3. *Link the bootloader object file in the target object file*](#23-link-the-bootloader-object-file-in-the-target-object-file)
-  - [2.4. *Open the CAN channel 0 acceptance filter for the bootloader activities*](#24-open-the-can-channel-0-acceptance-filter-for-the-bootloader-activities)
-- [3. Application usage](#3-application-usage)
+- [1. Project directory overview](#1-project-directory-overview)
+  - [1.1. MPLAB-X Progect directory](#11-mplab-x-progect-directory)
+  - [1.2. Project source directory](#12-project-source-directory)
+  - [1.3. Project documentation directory](#13-project-documentation-directory)
+- [2. Project documentation](#2-project-documentation)
+- [3. Project Environ revision](#3-project-environ-revision)
 
-# 1. Overview
+# 1. Project directory overview
+
+## 1.1. MPLAB-X Progect directory
+
+firmware
+ └─ FW_BOOT.X
+
+## 1.2. Project source directory
+
+firmware
+ └─ src
+
+## 1.3. Project documentation directory
+
+firmware
+ └─ doc
+
+# 2. Project documentation
+
+This project has been documented with Doxygen.
+The Doxygen project file is: 
+ 
+```text
+  firmware
+    └─doc
+        └─ fwboot_doxygen
+```
+
+The Document is compiled in HTML format.
+
+The HTML Document index is:
+
+```text
+  firmware
+    └─doc
+        └─ index.html
+```
+
 This document describes the Bootloader functions and the target requirements in order to 
 include the bootloader in a target application.
 
-# 2. Target Application setting
+# 3. Project Environ revision
 
-The target application, in order to include the bootloader features, shall prepare the project with the following steps:
+- mcc_version: v5.3.0
+- mcc_core_version: v5.5.0
+- mplabx_version: v6.05        # if MPLAB X plugin only
+- harmony_version: v1.3.0
+- compiler: XC32 (v3.01) 
 
-## 2.1. *Setting the Application Start Address to 0x2000*
+- modules:
+    - {name: "csp", version: "v3.9.1"}
+    - {name: "dev_packs", version: "v3.9.0"}
 
-In the Resource Management (MCC)-Project Graph, select the *System* options:
 
-```text
-Device & Project Configuration
- └─ Project Configuration
-     └─ Tool ChainSelections
-         └─ XC32 Global Options
-             └─ Linker
-                 └─ Symbols & Macros
-                     └─ Application Start Address (Hex) = 0x2000
-
-```
-
-## 2.2. *Setting the Bootloader shared RAM to 16 byte*
-
-The application and the bootloader shall share a RAM area in order to pass commands and params. The shared RAM area is 16 byte long 
-and shall be reserved in the linker section as followiing described:
-
-```text
-Menu-Production
- └─ Set Project Configuration
-     └─ Customize ..
-         └─ XC32 Global Options
-             └─ XC32-ld
-                 └─ Additional options: -DRAM_ORIGIN=0x20000010,-DRAM_LENGTH=0x3FFF0
-
-```
-## 2.3. *Link the bootloader object file in the target object file*
-
-The application needs to include into the target application binary, starting at 0x20000, 
-the bootloader binary, starting at 0x0000. The M4 core, at the reset, call the address 0x0000 and needs to find there the bootloader.
-
-```text
-Menu-Production
- └─ Set Project Configuration
-     └─ Customize ..
-         └─ Conf: [default]
-             └─ Loading
-                 └─ Add the FW_BOOT_xx.yy.hex
-```
-The **FW_BOOT_xx.yy.hex** is the bootloader binary at the revision **xx**.**yy**
-
-## 2.4. *Open the CAN channel 0 acceptance filter for the bootloader activities*
-
-The bootloader operates over the CAN bus (channel 0) with a proper address range.
-The application shall open the 0x1xx address where the xx stands for the CAN ID 
-of the target device. See the MET CAN protocol specification for details.
-
-# 3. Application usage
-
-The bootloader features are fully handled by the MET CAN protocol library module.
-See the CAN protocol for the usage details.
